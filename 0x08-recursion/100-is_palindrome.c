@@ -1,65 +1,39 @@
 #include "main.h"
 /**
-  *_strlen_recursion - returns the length of a string
-  * @s: the string
-  *
-  * Return: int/ length of string
-  *
-  */
+ * _strlen_recursion - Prints the length of a string.
+ * @s: the string to be printed
+ * Return: the length of string
+ */
 int _strlen_recursion(char *s)
 {
-	int len = 0;
-
-	if (*s == '\0')
-	{
+		if (s[0] != '\0')
+			return (1 + _strlen_recursion(s + 1));
 		return (0);
-	}
-	if (*s != '\0')
-	{
-		len++;
-		len += _strlen_recursion(++s);
-		return (len);
-	}
-	return (0);
 }
-
 /**
- * _compareends - checks for matches at either end of a str
- *
- * @s: the string
- *
- * @begin: the start
- *
- * @end: the end
- *
- * Return: 0 or 1
- *
+ * pal_checker - check if s is palindrome.
+ * @s: string base address.
+ * @i: left index.
+ * @j: rigth index.
+ * Return: 1 if s is palindrome, 0 otherwise.
  */
-int _compareends(char *s, int begin, int end)
+int pal_checker(char *s, int i, int j)
 {
-	if (begin >= end)
-		return (1);
-	if (s[begin] == s[end]
-			return (_compareends(s, (begin + 1), (end - 1)));
-			if (s[begin] == s[end] && begin == end)
+	if (s[i] == s[j])
+		if (i > j / 2)
 			return (1);
-			return (0);
-			}
-
+		else
+			return (pal_checker(s, i + 1, j - 1));
+	else
+		return (0);
+}
 /**
- * is_palindrome - checking for palindrome
- * @s: the string
+ * is_palindrome - check if s is palindrome
+ * @s: base address for string.
  *
- * Return: 1 if true, 0 if not
- *
+ * Return: 1 if n is prime, 0 otherwise.
  */
 int is_palindrome(char *s)
 {
-int len;
-
-len = _strlen_recursion(s);
-if (len == 0 || len == 1)
-	return (1);
-else
-	return (_compareends(s, 0, len - 1));
+		return (pal_checker(s, 0, _strlen_recursion(s) - 1));
 }
